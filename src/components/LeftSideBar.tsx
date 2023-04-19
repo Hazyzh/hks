@@ -1,7 +1,7 @@
 import { Typography, Divider, Image } from 'antd';
 import PopularImg from '../assets/popular.png';
 import HotWordsImg from '../assets/hotWords.svg';
-
+import './sidebar.css'
 
 const { Title, Text } = Typography;
 
@@ -29,11 +29,11 @@ const UnreadHotWords = () => {
 
 export const LeftSideBar = () => {
   return (
-    <>
+    <div className='side-bar'>
       <UnreadHotWords />
       <Divider />
       <MostPopular />
       <Divider />
-    </>
+    </div>
   );
 };
