@@ -1,4 +1,4 @@
-const topicItems = [
+export const topicItems = [
   {
     title: '针对《终身成长》这本书读后感的讨论',
     groupName: '海盐读书俱乐部',
