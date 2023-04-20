@@ -11,7 +11,7 @@ const MostPopular = () => {
       <Title level={4} type='secondary'>
         Most Popular Message
       </Title>
-      <Image preview={false} width={400} height={200} src={PopularImg} />
+      <Image preview={false} width={'100%'} height={240} src={PopularImg} />
     </>
   );
 };
@@ -22,7 +22,7 @@ const UnreadHotWords = () => {
       <Title level={4} type='secondary'>
         Hot Words Recap
       </Title>
-      <Image width={400} height={200} src={HotWordsImg} />
+      <Image width={'100%'} height={240} src={HotWordsImg} />
     </>
   );
 };
