@@ -9,7 +9,7 @@ const App = () => {
       <PageTitle />
       <Divider />
       <Row gutter={16}  style={{height: '100%'}}>
-        <Col span={16}>
+        <Col span={16} style={{height: '100%'}}>
           <MainPage />
         </Col>
         <Col span={8}>

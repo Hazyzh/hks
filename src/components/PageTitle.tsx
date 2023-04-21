@@ -11,7 +11,6 @@ export const PageTitle = () => {
   const endString = endDay.format('MM/DD');
   return (
     <>
-      <Title>Unread Messages Intelligent Summary</Title>
       <Space>
         <CalendarFilled />
         <Text type='secondary'>
