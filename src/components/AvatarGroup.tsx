@@ -1,8 +1,5 @@
-import { Typography, Space, Avatar } from 'antd';
-import { CalendarFilled } from '@ant-design/icons';
+import { Space, Avatar, Popover } from 'antd';
 import type { ITopicItem } from '../mocks/TopicItems';
-
-const { Title, Text } = Typography;
 
 const avatarIndexMap = {
   female: 0,
@@ -10,10 +7,10 @@ const avatarIndexMap = {
   pixel: 0,
 };
 let avatarIndex = 0;
-const getUrl = () => {
+const getUrl = (index: number) => {
   avatarIndex++;
   const arr: (keyof typeof avatarIndexMap)[] = ['female', 'male', 'pixel'];
-  const category = arr[avatarIndex % 3];
+  const category = arr[index % 3];
   return `https://xsgames.co/randomusers/avatar.php?g=${category}&key=0`;
   return `https://xsgames.co/randomusers/avatar.php?g=${category}&key=${avatarIndexMap[
     category
@@ -26,10 +23,12 @@ export const AvatarGroup = ({
   participants: ITopicItem['participants'];
 }) => {
   return (
-    <>
-      <Space>
-        {participants.map(() => <Avatar src={getUrl()}/>)}
-      </Space>
-    </>
+    <div className='avatar-group'>
+      {participants.map(({name, words}, index) => (
+        <Popover content={words} title={name} className="avatar-item">
+          <Avatar src={getUrl(index)} />
+        </Popover>
+      ))}
+    </div>
   );
 };

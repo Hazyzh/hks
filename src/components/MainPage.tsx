@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Avatar, List, Typography, Space, Divider, Tag } from 'antd';
+import { List, Typography, Space, Divider, Tag } from 'antd';
 import VirtualList from 'rc-virtual-list';
+import { CalendarFilled } from '@ant-design/icons';
+
 import { topicItems, ITopicItem } from '../mocks/TopicItems';
 import { AvatarGroup } from './AvatarGroup';
 import './mainPage.less';
@@ -36,7 +38,7 @@ const UnreadItemListRender = (item: ITopicItem) => {
         <Paragraph>{summary}</Paragraph>
         <AvatarGroup participants={participants}/>
         <Space>
-          <Text>Time Period:</Text>
+          <CalendarFilled />
           <Text type='secondary'>
             {startTime} ~ {endTime}
           </Text>
