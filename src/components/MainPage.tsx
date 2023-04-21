@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { List, Typography, Space, Divider, Tag, Badge } from "antd";
+import { List, Typography, Space, Divider, Tag, Badge, message } from "antd";
 import VirtualList from "rc-virtual-list";
 import { CalendarFilled } from "@ant-design/icons";
 
@@ -14,8 +14,8 @@ const data = repeat(topicItems, 5).map((item, number) => ({
   ...item,
 }));
 
-function goToConversation() {
-  window.parent.postMessage("hi", "*");
+function goToConversation(messageId: string) {
+  window.parent.postMessage(messageId, "*");
 }
 
 const { Title, Text, Link, Paragraph } = Typography;
@@ -30,13 +30,14 @@ const UnreadItemListRender = (item: ITopicItem) => {
     startTime,
     endTime,
     totallyPostCount,
+    messageId,
   } = item;
   return (
     <List.Item className="topic-item" key={id}>
       <Badge.Ribbon text={`${totallyPostCount} Posts`} color="gray">
         <Space direction="vertical">
           <Title level={5}>{title}</Title>
-          <Link onClick={() => goToConversation()}>{groupName}</Link>
+          <Link onClick={() => goToConversation(messageId)}>{groupName}</Link>
           <Space size={0} split={<Divider type="vertical" />}>
             {keyWords.map((keyword, index) => (
               <Tag bordered={false} key={index}>
