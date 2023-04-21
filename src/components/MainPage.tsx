@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Avatar, List, Typography, Space, Divider, Tag } from 'antd';
 import VirtualList from 'rc-virtual-list';
 import { topicItems, ITopicItem } from '../mocks/TopicItems';
+import { AvatarGroup } from './AvatarGroup';
 import './mainPage.less';
 const repeat = (arr: any[], n: number): ITopicItem[] =>
   [].concat(...Array(n).fill(arr));
@@ -9,22 +10,6 @@ const data = repeat(topicItems, 5).map((item, number) => ({
   id: `${number} -- 1`,
   ...item,
 }));
-
-const avatarIndexMap = {
-  female: 0,
-  male: 0,
-  pixel: 0,
-};
-let avatarIndex = 0;
-const getUrl = () => {
-  avatarIndex++;
-  const arr: (keyof typeof avatarIndexMap)[] = ['female', 'male', 'pixel'];
-  const category = arr[avatarIndex % 3];
-  return `https://xsgames.co/randomusers/avatar.php?g=${category}&key=0`;
-  return `https://xsgames.co/randomusers/avatar.php?g=${category}&key=${avatarIndexMap[
-    category
-  ]++}`;
-};
 
 const { Title, Text, Link, Paragraph } = Typography;
 const UnreadItemListRender = (item: ITopicItem) => {
@@ -49,11 +34,7 @@ const UnreadItemListRender = (item: ITopicItem) => {
           ))}
         </Space>
         <Paragraph>{summary}</Paragraph>
-        <Avatar.Group>
-          {participants.map((item, index) => {
-            return <Avatar src={getUrl()} />;
-          })}
-        </Avatar.Group>
+        <AvatarGroup participants={participants}/>
         <Space>
           <Text>Time Period:</Text>
           <Text type='secondary'>
