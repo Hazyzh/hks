@@ -1,13 +1,11 @@
 body {
-  margin: 20px;
-  overflow: hidden;
   height: 100%;
+  width: 100%;
 }
 
 #root {
+  padding: 20px;
   height: 100%;
-}
-
-* {
-  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
 }

@@ -25,7 +25,7 @@ export const AvatarGroup = ({
   return (
     <div className='avatar-group'>
       {participants.map(({name, words}, index) => (
-        <Popover content={words} title={name} className="avatar-item">
+        <Popover content={words} title={name} key={index} className="avatar-item">
           <Avatar src={getUrl(index)} />
         </Popover>
       ))}

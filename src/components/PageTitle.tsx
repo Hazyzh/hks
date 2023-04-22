@@ -3,6 +3,7 @@ import { Typography, Space } from 'antd';
 import { CalendarFilled } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
+import './pageTitle.less';
 
 export const PageTitle = () => {
   const endDay = dayjs();
@@ -10,13 +11,13 @@ export const PageTitle = () => {
   const startString = startDay.format('MM/DD');
   const endString = endDay.format('MM/DD');
   return (
-    <>
+    <div className='page-title'>
       <Space>
         <CalendarFilled />
         <Text type='secondary'>
           {startString} 10:19 PM ～ {endString} 8:36 AM
         </Text>
       </Space>
-    </>
+    </div>
   );
 };

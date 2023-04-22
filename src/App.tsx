@@ -7,7 +7,6 @@ const App = () => {
   return (
     <ConfigProvider>
       <PageTitle />
-      <Divider />
       <Row gutter={16}  style={{height: '100%'}}>
         <Col span={16} style={{height: '100%'}}>
           <MainPage />
