@@ -14,8 +14,14 @@ const data = repeat(topicItems, 5).map((item, number) => ({
   ...item,
 }));
 
-function goToConversation(messageId: string) {
-  window.parent.postMessage(messageId, "*");
+function goToConversation({
+  conversationId,
+  jumpToPostId,
+}: {
+  conversationId: string;
+  jumpToPostId: number;
+}) {
+  window.parent.postMessage({ conversationId, jumpToPostId }, "*");
 }
 
 const { Title, Text, Link, Paragraph } = Typography;
@@ -30,14 +36,19 @@ const UnreadItemListRender = (item: ITopicItem) => {
     startTime,
     endTime,
     totallyPostCount,
-    messageId,
+    conversationId,
+    jumpToPostId,
   } = item;
   return (
     <List.Item className="topic-item" key={id}>
       <Badge.Ribbon text={`${totallyPostCount} Posts`} color="gray">
         <Space direction="vertical">
           <Title level={5}>{title}</Title>
-          <Link onClick={() => goToConversation(messageId)}>{groupName}</Link>
+          <Link
+            onClick={() => goToConversation({ conversationId, jumpToPostId })}
+          >
+            {groupName}
+          </Link>
           <Space size={0} split={<Divider type="vertical" />}>
             {keyWords.map((keyword, index) => (
               <Tag bordered={false} key={index}>

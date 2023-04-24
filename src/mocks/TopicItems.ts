@@ -9,7 +9,8 @@ export const topicItems = [
   {
     title: '针对《终身成长》这本书读后感的讨论',
     groupName: '海盐读书俱乐部',
-    messageId: '5679988742',
+    conversationId: '5679988742',
+    jumpToPostId: 11919491076,
     participants: [
       {
         name: 'Jerry Chen',
