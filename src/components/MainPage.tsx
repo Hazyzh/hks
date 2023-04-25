@@ -1,11 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import { List, Typography, Space, Divider, Tag, Badge, message } from "antd";
-import VirtualList from "rc-virtual-list";
-import { CalendarFilled } from "@ant-design/icons";
+import { useState, useEffect, useRef } from 'react';
+import { List, Typography, Space, Divider, Tag, Badge, message } from 'antd';
+import VirtualList from 'rc-virtual-list';
+import Icon, { CalendarFilled } from '@ant-design/icons';
 
-import { topicItems, ITopicItem } from "../mocks/TopicItems";
-import { AvatarGroup } from "./AvatarGroup";
-import "./mainPage.less";
+import { topicItems, ITopicItem } from '../mocks/TopicItems';
+import { AvatarGroup } from './AvatarGroup';
+import { ReactComponent as TopicIcon } from '../assets/topic.svg';
+import { ReactComponent as GroupIcon } from '../assets/group.svg';
+import './mainPage.less';
 
 const repeat = (arr: any[], n: number): ITopicItem[] =>
   [].concat(...Array(n).fill(arr));
@@ -21,7 +23,7 @@ function goToConversation({
   conversationId: string;
   jumpToPostId: number;
 }) {
-  window.parent.postMessage({ conversationId, jumpToPostId }, "*");
+  window.parent.postMessage({ conversationId, jumpToPostId }, '*');
 }
 
 const { Title, Text, Link, Paragraph } = Typography;
@@ -40,27 +42,34 @@ const UnreadItemListRender = (item: ITopicItem) => {
     jumpToPostId,
   } = item;
   return (
-    <List.Item className="topic-item" key={id}>
-      <Badge.Ribbon text={`${totallyPostCount} Posts`} color="gray">
-        <Space direction="vertical">
-          <Title level={5}>{title}</Title>
-          <Link
-            onClick={() => goToConversation({ conversationId, jumpToPostId })}
-          >
-            {groupName}
-          </Link>
-          <Space size={0} split={<Divider type="vertical" />}>
+    <List.Item className='topic-item' key={id}>
+      <Badge.Ribbon text={`${totallyPostCount} Posts, ${participants.length} Participants`} color='gray'>
+        <Space direction='vertical'>
+          <Space>
+            <TopicIcon className='page-item-icon' />
+            <Title level={5}>{title}</Title>
+          </Space>
+          <Space>
+            <GroupIcon className='page-item-icon-sub' />
+            <Link
+              onClick={() => goToConversation({ conversationId, jumpToPostId })}
+            >
+              {groupName}
+            </Link>
+          </Space>
+
+          <Space size={0} split={<Divider type='vertical' />}>
             {keyWords.map((keyword, index) => (
               <Tag bordered={false} key={index}>
                 {keyword}
               </Tag>
             ))}
           </Space>
-          <Paragraph>{summary}</Paragraph>
+          <Paragraph style={{textIndent: '2em'}}>{summary}</Paragraph>
           <AvatarGroup participants={participants} />
           <Space>
             <CalendarFilled />
-            <Text type="secondary">
+            <Text type='secondary'>
               {startTime} ~ {endTime}
             </Text>
           </Space>
@@ -77,9 +86,9 @@ export const MainPage = () => {
     setHigh(box.current?.offsetHeight ?? 1000);
   }, []);
   return (
-    <div ref={box} style={{ height: "100%" }}>
+    <div ref={box} style={{ height: '100%' }}>
       <List>
-        <VirtualList data={data} height={high} itemHeight={350} itemKey="id">
+        <VirtualList data={data} height={high} itemHeight={350} itemKey='id'>
           {(item: ITopicItem) => UnreadItemListRender(item)}
         </VirtualList>
       </List>

@@ -1,7 +1,7 @@
 import { Typography, Divider, Image, Space, Card } from 'antd';
 import { SoundOutlined, AimOutlined } from '@ant-design/icons';
 import PopularImg from '../assets/popular.png';
-import HotWordsImg from '../assets/hotWords.svg';
+import HotWordsImg from '../assets/hotWords.svg?url';
 import './sidebar.css';
 
 const { Title, Text } = Typography;
