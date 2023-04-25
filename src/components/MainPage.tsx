@@ -11,7 +11,7 @@ import './mainPage.less';
 
 const repeat = (arr: any[], n: number): ITopicItem[] =>
   [].concat(...Array(n).fill(arr));
-const data = repeat(topicItems, 5).map((item, number) => ({
+const defaultData = repeat(topicItems, 5).map((item, number) => ({
   id: `${number}`,
   ...item,
 }));
@@ -43,7 +43,10 @@ const UnreadItemListRender = (item: ITopicItem) => {
   } = item;
   return (
     <List.Item className='topic-item' key={id}>
-      <Badge.Ribbon text={`${totallyPostCount} Posts, ${participants.length} Participants`} color='gray'>
+      <Badge.Ribbon
+        text={`${totallyPostCount} Posts, ${participants.length} Participants`}
+        color='gray'
+      >
         <Space direction='vertical'>
           <Space>
             <TopicIcon className='page-item-icon' />
@@ -65,7 +68,7 @@ const UnreadItemListRender = (item: ITopicItem) => {
               </Tag>
             ))}
           </Space>
-          <Paragraph style={{textIndent: '2em'}}>{summary}</Paragraph>
+          <Paragraph style={{ textIndent: '2em' }}>{summary}</Paragraph>
           <AvatarGroup participants={participants} />
           <Space>
             <CalendarFilled />
@@ -79,7 +82,11 @@ const UnreadItemListRender = (item: ITopicItem) => {
   );
 };
 
-export const MainPage = () => {
+export const MainPage = ({ filters }: { filters: string[] }) => {
+  let data = defaultData;
+  if (filters.length) {
+    data = defaultData.filter(item => filters.includes(item.groupName))
+  }
   const box = useRef<HTMLDivElement>(null);
   const [high, setHigh] = useState(1000);
   useEffect(() => {

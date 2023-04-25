@@ -104,6 +104,8 @@ export const topicItems = [
   },
 ];
 
+export const allFilters = [...new Set(topicItems.map(item => item.groupName))]
+
 export type ITopicItem = (typeof topicItems)[0] & { id?: string };
 
 /**

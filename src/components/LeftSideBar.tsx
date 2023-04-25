@@ -19,7 +19,7 @@ const MostPopular = () => {
         </Title>
       }
     >
-      <Image height={240} src={PopularImg} />
+      <Image height={340} src={PopularImg} />
     </Card>
   );
 };
