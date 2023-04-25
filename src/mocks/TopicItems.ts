@@ -51,8 +51,8 @@ export const topicItems = [
     summary: `推荐的书是《终身成长》（Growth Mindset），该书探讨了用成长的思维去看待问题的重要性，即用积极向上、勇敢自洽的心态面对困境和负面情绪。
       该书没有讨论不想成长的情况，但是采用成长思维可以让人更好地面对生活中的各种挑战和机遇，从中发现发展的机会。有人问是否一定要用“成长”思维来应对所有事情，
       大家的看法不同，但是普遍认为只要成长思维可以支持自己的目标，那就是舒适的，如果冲突了，接纳也是一种智慧。`,
-    startTime: "04/19 10:19 PM",
-    endTime: "04/20 8:36 AM",
+    startTime: "04/25 10:19 PM",
+    endTime: "04/26 8:36 AM",
     link: "",
   },
   {
@@ -98,8 +98,8 @@ export const topicItems = [
       作品评价将根据商业价值、创新性、用户体验、可生产性和演示来评判。
       获奖者将获得丰厚的奖励，每个参赛者都将获得一份黑客松周边礼物。
       Thea Lin也回答了其他参赛者的一些问题，例如作品的要求、Coding Party的目的和初赛的流程。`,
-    startTime: "04/23 8:51 PM",
-    endTime: "04/24 12:08 AM",
+    startTime: "04/25 8:51 PM",
+    endTime: "04/26 12:08 AM",
     link: "",
   },
 ];
@@ -107,15 +107,3 @@ export const topicItems = [
 export const allFilters = [...new Set(topicItems.map(item => item.groupName))]
 
 export type ITopicItem = (typeof topicItems)[0] & { id?: string };
-
-/**
- * 
- * 
-Item:
-- Topic 标题
-- 群聊名称
-- 参与人员名称和头像
-- 聊天中输出观点的关键字
-- 这段对话整体的总结信息
-- 对话开始和结束时间
- */
