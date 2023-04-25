@@ -34,7 +34,7 @@ export const topicItems = [
         words:
           "在讨论成长这个词的定义，指出现代文化下的成长更偏向实用主义，而古代人也需要成长，只是定义不同。他还提到费孝通的理论，认为需求是社会化产物，生育也是如此。",
       },
-      ...new Array(18).fill(mockItem),
+      ...new Array(10).fill(mockItem),
     ],
     keyWords: [
       "《终身成长》",
@@ -83,7 +83,7 @@ export const topicItems = [
         words:
           "初赛当日为4月26日下午1点半开始，分成三个Track进行，每个Track 15组，每组展示时间10min（Demo 7min+QA 3min），每个Track的Top4进入决赛。",
       },
-      ...new Array(18).fill(mockItem),
+      ...new Array(4).fill(mockItem),
     ],
     keyWords: [
       "Hackathon",

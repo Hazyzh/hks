@@ -69,7 +69,7 @@ const UnreadItemListRender = (item: ITopicItem) => {
             ))}
           </Space>
           <Paragraph style={{ textIndent: '2em' }}>{summary}</Paragraph>
-          <AvatarGroup participants={participants} />
+          <AvatarGroup participants={participants} index={id}/>
           <Space>
             <CalendarFilled />
             <Text type='secondary'>
@@ -85,7 +85,7 @@ const UnreadItemListRender = (item: ITopicItem) => {
 export const MainPage = ({ filters }: { filters: string[] }) => {
   let data = defaultData;
   if (filters.length) {
-    data = defaultData.filter(item => filters.includes(item.groupName))
+    data = defaultData.filter((item) => filters.includes(item.groupName));
   }
   const box = useRef<HTMLDivElement>(null);
   const [high, setHigh] = useState(1000);
@@ -95,7 +95,7 @@ export const MainPage = ({ filters }: { filters: string[] }) => {
   return (
     <div ref={box} style={{ height: '100%' }}>
       <List>
-        <VirtualList data={data} height={high} itemHeight={350} itemKey='id'>
+        <VirtualList data={data} height={high} itemHeight={300} itemKey='id'>
           {(item: ITopicItem) => UnreadItemListRender(item)}
         </VirtualList>
       </List>
