@@ -67,6 +67,12 @@ export const topicItems = [
         words: "Hackathon2023报名进行中，没有主题限制，可以是任何奇思妙想，报名截止时间为4月10日。",
       },
       {
+        name: "Harry Hou",
+        avatar: "",
+        words:
+          "初赛当日为4月26日下午1点半开始，分成三个Track进行，每个Track 15组，每组展示时间10min（Demo 7min+QA 3min），每个Track的Top4进入决赛。",
+      },
+      {
         name: "Sophie Wu",
         avatar: "",
         words:
@@ -76,12 +82,6 @@ export const topicItems = [
         name: "Sarah Chen",
         avatar: "",
         words: "Coding Party提供餐饮和场地，并提供导师全程陪同，帮助参赛同学在决赛前更精细地完善作品。",
-      },
-      {
-        name: "Harry Hou",
-        avatar: "",
-        words:
-          "初赛当日为4月26日下午1点半开始，分成三个Track进行，每个Track 15组，每组展示时间10min（Demo 7min+QA 3min），每个Track的Top4进入决赛。",
       },
       ...new Array(4).fill(mockItem),
     ],
