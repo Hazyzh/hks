@@ -11,7 +11,7 @@ import './mainPage.less';
 
 const repeat = (arr: any[], n: number): ITopicItem[] =>
   [].concat(...Array(n).fill(arr));
-const defaultData = repeat(topicItems, 5).map((item, number) => ({
+const defaultData = repeat(topicItems, 2).map((item, number) => ({
   id: `${number}`,
   ...item,
 }));
@@ -42,11 +42,20 @@ const UnreadItemListRender = (item: ITopicItem) => {
     jumpToPostId,
   } = item;
   return (
-    <List.Item className='topic-item' key={id}>
-      <Badge.Ribbon
-        text={`${totallyPostCount} Posts, ${participants.length} Participants`}
-        color='gray'
-      >
+    <Badge.Ribbon
+      style={{ margin: '20px', background: '#d5d5d5' }}
+      key={id}
+      text={
+        <>
+          <Text type="secondary" strong>{totallyPostCount}</Text> 
+          <Text type="secondary"> Posts,</Text>
+          <Text type="secondary" strong>{participants.length}</Text>
+          <Text type="secondary"> Participants</Text>
+        </>
+      }
+      color='gray'
+    >
+      <List.Item className='topic-item' key={id}>
         <Space direction='vertical'>
           <Space>
             <TopicIcon className='page-item-icon' />
@@ -68,8 +77,8 @@ const UnreadItemListRender = (item: ITopicItem) => {
               </Tag>
             ))}
           </Space>
-          <Paragraph style={{ textIndent: '2em' }}>{summary}</Paragraph>
-          <AvatarGroup participants={participants} index={id}/>
+          <Paragraph>{summary}</Paragraph>
+          <AvatarGroup participants={participants} index={id} />
           <Space>
             <CalendarFilled />
             <Text type='secondary'>
@@ -77,8 +86,8 @@ const UnreadItemListRender = (item: ITopicItem) => {
             </Text>
           </Space>
         </Space>
-      </Badge.Ribbon>
-    </List.Item>
+      </List.Item>
+    </Badge.Ribbon>
   );
 };
 
